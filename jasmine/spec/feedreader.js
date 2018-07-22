@@ -58,7 +58,7 @@ $(function() {
          * hiding/showing of the menu element.
          */
         it('is hidden by default', function(){
-            expect($('body').hasClass('menu-hidden')).toBe(true);
+            expect($('body').hasClass('menu-hidden')).toBeTruthy();
         });
 
          /* TODO: Write a test that ensures the menu changes
@@ -69,10 +69,10 @@ $(function() {
         it('changes visibility on click', function(){
           //when menu icon is clicked first time, menu items should not be hidden
             $('.menu-icon-link').click();
-            expect($('body').hasClass('menu-hidden')).toBe(false);
+            expect($('body').hasClass('menu-hidden')).toBeFalsy();
           //when menu icon is clicked second time, menu items should be hidden
             $('.menu-icon-link').click();
-            expect($('body').hasClass('menu-hidden')).toBe(true);
+            expect($('body').hasClass('menu-hidden')).toBeTruthy();
         });
     });
 
@@ -87,8 +87,8 @@ $(function() {
         var entryCount = 0;
         beforeEach(function(done){
             loadFeed(0, function(){
-            entryCount = $('.entry').length;
-            done();
+                entryCount = $('.entry').length;
+                done();
             });
         });
         it('has at least a single entry element within the feed container', function(){
@@ -101,6 +101,22 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
     describe('New Feed Selection', function() {
+        var initialContent,
+            laterContent;
+        initialContent = $('.feed').innerHTML;
+        beforeEach(function(done){
+            loadFeed(1, function(){
+                initialContent = $('.feed').html();
+            loadFeed(2, function(){
+                laterContent = $('.feed').html();
+                done();
+            });
+});
+
+        });
+        it('ensures the content actually changes when a new feed is loaded by loadFeed function', function(){
+            expect(laterContent).not.toEqual(initialContent);
+        });
     });
 
 }());
