@@ -5,8 +5,8 @@ This is a web-based application that reads RSS feeds and Jasmine is used to writ
 
 ## Link
 
-This application can be accessed using index.html after downloading the file from ().
-The tests are included at jasmine/spec/feedreader.js
+This application can be accessed using index.html after downloading the file from (https://github.com/apatraray/feedReaderTesting.git).
+The tests are included at jasmine/spec/feedreader.js.
 
 ## Instructions
 
