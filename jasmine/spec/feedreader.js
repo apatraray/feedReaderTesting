@@ -75,12 +75,12 @@ $(function() {
         var entryCount = 0;
         beforeEach(function(done){
             loadFeed(0, function(){
-                entryCount = $('.entry').length;
+                entryCount = $('.feed .entry').length;
                 done();
             });
         });
         it('has at least a single entry element within the feed container', function(){
-            expect(entryCount).not.toBe(0);
+            expect(entryCount).toBeGreaterThan(0);
         });
     });
     /* Test suite for name "New Feed Selection" */
